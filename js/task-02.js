@@ -1,24 +1,9 @@
-const ingredients = [
-  "Potatoes",
-  "Mushrooms",
-  "Garlic",
-  "Tomatos",
-  "Herbs",
-  "Condiments",
-];
+const inputField = document.querySelector("input#font-size-control");
 
-const list = document.querySelector("ul#ingredients");
-const item = document.createElement("li");
+const text = document.querySelector("span#text");
 
-// item.classList.add = "item";
-// const markup = ingredients.map((el) => `<li class='item'>${el}</li>`).join("");
-// list.innerHTML = markup;
+text.style.fontSize = `${inputField.value}px`;
 
-const createEl = (el) => {
-  const itemEl = document.createElement("li");
-  itemEl.classList.add("item");
-  itemEl.textContent = el;
-  return itemEl;
-};
-const markup = ingredients.map((ingredient) => createEl(ingredient));
-list.append(...markup);
+inputField.addEventListener("input", () => {
+  text.style.fontSize = `${inputField.value}px`;
+});

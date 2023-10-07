@@ -1,30 +1,17 @@
-let countValue = 0;
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
 
-const counterContainer = document.querySelector("#counter");
-console.log(counterContainer);
+const bodyBg = document.querySelector("body");
 
-const value = counterContainer.querySelector("#value");
-console.log(value);
+const buttonBg = document.querySelector("button.change-color");
 
-const decrementBtn = document.querySelector(
-  'div#counter button[data-action="decrement"]'
-);
+const colorName = document.querySelector("span.color");
 
-const incrementBtn = document.querySelector(
-  'div#counter button[data-action="increment"]'
-);
-
-console.log(decrementBtn.dataset.action);
-console.log(incrementBtn.dataset.action);
-
-decrementBtn.addEventListener("click", () => {
-  const result = (countValue -= 1);
-  console.log("result: ", result);
-  return (value.innerHTML = result);
-});
-
-incrementBtn.addEventListener("click", () => {
-  const result = (countValue += 1);
-  console.log("result: ", result);
-  return (value.innerHTML = result);
+buttonBg.addEventListener("click", () => {
+  const changedColor = getRandomHexColor();
+  bodyBg.style.backgroundColor = changedColor;
+  colorName.textContent = changedColor;
 });
